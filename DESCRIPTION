@@ -12,9 +12,11 @@ Description: This package fits an Ornstein-Uhlenbeck State-Space model to time-s
 License: MIT + file LICENSE
 Imports:
     tidyverse,
+    lubridate,
     auk,
     dggridR,
     MASS,
+Suggests:
     maps,
     gridExtra
 Encoding: UTF-8

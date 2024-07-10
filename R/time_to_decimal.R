@@ -1,4 +1,3 @@
-require(tidyverse)
 #' Convert time (Hour Minute Second) to decimal number.
 #'
 #' @description
