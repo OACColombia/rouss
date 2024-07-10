@@ -5,7 +5,7 @@ Authors@R:
     c(
     person("Orlando", "Acevedo-Charry", , "acevedocharry@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4964-8994")),
-    person("José Miguel", "Ponciano", , "josemi@ufl.edu", role = c("aut", "cre"),
+    person("José Miguel", "Ponciano", , "josemi@ufl.edu", role = c("aut"),
            comment = c(ORCID = "0000-0001-8457-7840")))
 Description: This package fits an Ornstein-Uhlenbeck State-Space model to time-series data from the community science data eBird. 
     Then, it conducts a Viable Population Monitoring to assess probability of extinction of the population across time.
