@@ -17,7 +17,7 @@ A vector of four values, the first guess of the parameters to conduct numerical 
 \description{
 The numerical optimization (Maximum Likelihood Estimate - MLE and Restricted Maximum Likelihood Estimates - REMLE) for the Ornstein-Uhlenbeck State-Space (OUSS) population model requires a first guess of the four parameters:
 \itemize{
-\item 𝜇 (in stationary distribution is the expected value of stationary distribution of log-abundance mean; it is different than 𝜇91 in Dennis et al. (1991) and 𝜇in Humbert et al. (2009), named here 𝜃 in 1.3.2. EGSS),
+\item 𝜇 (in stationary distribution is the expected value of stationary distribution of log-abundance mean; it is different than 𝜇91 in Dennis \emph{et al.} (1991) and 𝜇 in Humbert \emph{et al.} (2009), named here 𝜃 in EGSS),
 \item 𝜃 (rate to approach to stationarity),
 \item 𝛽^2 (variability of process noise),
 \item 𝜏^2 (variability of sampling).

@@ -2,7 +2,7 @@
 #'
 #'@description
 #' The numerical optimization (Maximum Likelihood Estimate - MLE and Restricted Maximum Likelihood Estimates - REMLE) for the Ornstein-Uhlenbeck State-Space (OUSS) population model requires a first guess of the four parameters:
-#' * 𝜇 (in stationary distribution is the expected value of stationary distribution of log-abundance mean; it is different than 𝜇91 in Dennis et al. (1991) and 𝜇in Humbert et al. (2009), named here 𝜃 in 1.3.2. EGSS),
+#' * 𝜇 (in stationary distribution is the expected value of stationary distribution of log-abundance mean; it is different than 𝜇91 in Dennis _et al._ (1991) and 𝜇 in Humbert _et al._ (2009), named here 𝜃 in EGSS),
 #' * 𝜃 (rate to approach to stationarity),
 #' * 𝛽^2 (variability of process noise),
 #' * 𝜏^2 (variability of sampling).
