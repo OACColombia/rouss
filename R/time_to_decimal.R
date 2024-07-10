@@ -1,5 +1,8 @@
 require(tidyverse)
-#' Convert time (Hour Minute Second) to decimal number. This function came from "Best Practices for Using eBird Data" by Matthew Strimas-Mackey, Wesley M. Hochachka, Viviana Ruiz-Gutierrez, Orin J. Robinson, Eliot T. Miller, Tom Auer, Steve Kelling, Daniel Fink, & Alison Johnston
+#' Convert time (Hour Minute Second) to decimal number.
+#'
+#' @description
+#' This function helps to convert time information (Hour Minute Second) to decimal number. It was extracted from "Best Practices for Using eBird Data" by Matthew Strimas-Mackey, Wesley M. Hochachka, Viviana Ruiz-Gutierrez, Orin J. Robinson, Eliot T. Miller, Tom Auer, Steve Kelling, Daniel Fink, & Alison Johnston
 #'
 #' @param x A character vector of hour minute second
 #'

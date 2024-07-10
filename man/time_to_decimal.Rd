@@ -2,7 +2,7 @@
 % Please edit documentation in R/time_to_decimal.R
 \name{time_to_decimal}
 \alias{time_to_decimal}
-\title{Convert time (Hour Minute Second) to decimal number}
+\title{Convert time (Hour Minute Second) to decimal number. This function came from "Best Practices for Using eBird Data" by Matthew Strimas-Mackey, Wesley M. Hochachka, Viviana Ruiz-Gutierrez, Orin J. Robinson, Eliot T. Miller, Tom Auer, Steve Kelling, Daniel Fink, & Alison Johnston}
 \usage{
 time_to_decimal(x)
 }
@@ -13,7 +13,7 @@ time_to_decimal(x)
 A numeric vector of decimal time
 }
 \description{
-Convert time (Hour Minute Second) to decimal number
+Convert time (Hour Minute Second) to decimal number. This function came from "Best Practices for Using eBird Data" by Matthew Strimas-Mackey, Wesley M. Hochachka, Viviana Ruiz-Gutierrez, Orin J. Robinson, Eliot T. Miller, Tom Auer, Steve Kelling, Daniel Fink, & Alison Johnston
 }
 \examples{
 x <- "7 6 5"
