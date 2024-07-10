@@ -1,4 +1,14 @@
 require(tidyverse)
+#' Convert time (Hour Minute Second) to decimal number
+#'
+#' @param x A character vector of hour minute second
+#'
+#' @return A numeric vector of decimal time
+#' @export
+#'
+#' @examples
+#' x <- "7 6 5"
+#' time_to_decimal(x)
 time_to_decimal <- function(x) {
   x <- hms(x, quiet = TRUE)
   hour(x) + minute(x) / 60 + second(x) / 3600
