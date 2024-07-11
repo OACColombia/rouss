@@ -61,7 +61,7 @@ negloglike_OU_mle <- function(yt,tt,fguess){
   mu.vec    <- rep(mu,qp1);
 
   #note the signs change because we want here the negative log-likelihood (Eq19 in Dennis & Ponciano 2014)
-  neglogl   <- (qp1/2)*log(2*pi) + (1/2)*log(det(V)) + (1/2)*(yt-mu.vec)%*%ginv(V)%*%(yt-mu.vec);
+  neglogl   <- (qp1/2)*log(2*pi) + (1/2)*log(det(V)) + (1/2)*(yt-mu.vec)%*%MASS::ginv(V)%*%(yt-mu.vec);
 
   return(neglogl)
 }
