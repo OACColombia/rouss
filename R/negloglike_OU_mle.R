@@ -1,14 +1,7 @@
 #' Numerical optimization for Maximum Likelihood Estimation - OUSS
 #'
 #'@description
-#' The multivariate log-likelihood for the stationary Ornstein-Uhlenbeck State-Space (OUSS) population model is given by:
-#'
-#' $$\ln{L}(\mu, \theta, \beta^2, \tau^2) = -\frac{(q+1)}{2}\ln(2\pi)-\frac{1}{2}\ln(|\mathbf{V}|)-\frac{1}{2}(\mathbf{y}-\mathbf{m})'\mathbf{V}^{-1}(\mathbf{y}-\mathbf{m})$$
-#'
-#' where $q$ is the number of time-series transitions (thus, $q+1$ reflect the length of the time-series, with the initial population estimation $y_0$ as a realized value of the random variable $Y(0)$),
-#' $\mathbf{V}$ is the variance-covariance matrix (with diagonal computed from $V[Y(t_i)] = \tau^2+\frac{\beta^2}{2\theta}$; Eq. 17 in Dennis & Ponciano 2014),
-#' $\mathbf{y}$ is the data values ($y_0$, $y_1$, $y_2$, ..., $y_q$), and
-#' $\mathbf{m}$ is the vector of same $\mu$ in all $q+1$ times ($E[Y(t_i)] = \mu]$; Eq. 16 in Dennis & Ponciano 2014).
+#' The multivariate log-likelihood for the stationary Ornstein-Uhlenbeck State-Space (OUSS) population model formula in Dennis & Ponciano (2014).
 #'
 #' This function provides the first guess of these parameters, roughly computed by provide the vector of log-abundance observations `yt` (𝐲) and the vector of observation times `tt`
 

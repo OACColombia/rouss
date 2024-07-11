@@ -26,7 +26,7 @@ OUSS_St_MLE <- function(yt,tt,fguess){
   # initial guesses (mu as estimated, theta, betasq, and tausq at log scale (?))
   guess.optim <- c(fguess[1], log(fguess[2:4]))
   # numerical optimization
-  optim.out   <- MASS::optim(par=guess.optim,
+  optim.out   <- stats::optim(par=guess.optim,
                        fn=negloglike_OU_mle,
                        method="Nelder-Mead",
                        yt=yt,
