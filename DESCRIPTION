@@ -1,5 +1,5 @@
-Package: vpm
-Title: Risk-based Viable Population Monitoring using community science data
+Package: rouss
+Title: Density-dependent state-space models for population-abundance unequal time-series
 Version: 0.0.0.9000
 Authors@R: 
     c(
@@ -12,11 +12,11 @@ Description: This package fits an Ornstein-Uhlenbeck State-Space model to time-s
 License: MIT + file LICENSE
 Imports:
     tidyverse,
+    MASS,
+Suggests:
     lubridate,
     auk,
     dggridR,
-    MASS,
-Suggests:
     maps,
     gridExtra
 Encoding: UTF-8
