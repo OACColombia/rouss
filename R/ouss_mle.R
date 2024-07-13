@@ -13,9 +13,9 @@
 #' @examples
 #' yt1 = log(c(18,10,9,14,17,14,5,10,9,5,11,11,4,5,4,8,2,3,9,2,4,7,4,1,2,4,11,11,9,6))
 #' tt1 = c(1966:1995)
-#' OUSS_St_MLE(yt = yt1, tt = tt1, fguess = guess_ouss(yt = yt1, tt = tt1))
+#' ouss_mle(yt = yt1, tt = tt1, fguess = guess_ouss(yt = yt1, tt = tt1))
 
-OUSS_St_MLE <- function(yt,tt,fguess){
+ouss_mle <- function(yt,tt,fguess){
 
   # Time-vector starting in 0.
   t.i         <- tt-tt[1];
@@ -27,7 +27,7 @@ OUSS_St_MLE <- function(yt,tt,fguess){
   guess.optim <- c(fguess[1], log(fguess[2:4]))
   # numerical optimization
   optim.out   <- stats::optim(par=guess.optim,
-                       fn=negloglike_OU_mle,
+                       fn=negloglike_ouss_mle,
                        method="Nelder-Mead",
                        yt=yt,
                        tt=t.i)
