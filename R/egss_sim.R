@@ -1,11 +1,11 @@
-#' Simulation of EGSS dynamic
+#' Simulation of EGSS model
 #'
 #' @description
-#' Function to simulate exponential stochastic population dynamics from parameters fitted under Exponential Growth State-Space models.
+#' Function to simulate exponential stochastic population dynamics from parameters fitted under the Exponential Growth State-Space models.
 #'
 #' @param nsims The number of bootstrap replicates to simulate (≥2000)
 #' @param tt The ORIGINAL vector of observation times (𝑡_0, 𝑡_1, 𝑡_2, …, 𝑡_𝑞)
-#' @param parms A vector of parameters values estimated from `egss_mle()` (\hat{𝜃̂}, 𝜎2^, 𝜏2^, 𝑥0^; eggs$mles)
+#' @param parms A vector of parameters values estimated from `egss_mle()`
 #'
 #' @return A matrix of size `nsims` with simulations of log abundance in each time step of the timeseries (using `randmvn()`)
 #' @export
