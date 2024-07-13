@@ -18,7 +18,7 @@
 #' tt1 = c(1966:1995)
 #' negloglike_OU_mle(yt = yt1, tt = tt1, fguess = guess_ouss(yt = yt1, tt = tt1))
 
-negloglike_OU_mle <- function(yt,tt,fguess){
+negloglike_ous_mle <- function(yt,tt,fguess){
 
   # log-abundance stationary distribution mean (Eq10 in Dennis & Ponciano 2014)
   mu        <- fguess[1];
