@@ -1,16 +1,13 @@
-#' Numerical optimization for Maximum Likelihood Estimation - OUSS
+#' Numerical optimization for MLE of the OUSS
 #'
 #'@description
-#' The multivariate log-likelihood for the stationary Ornstein-Uhlenbeck State-Space (OUSS) population model formula in Dennis & Ponciano (2014).
-#'
-#' This function provides the first guess of these parameters, roughly computed by provide the vector of log-abundance observations `yt` (𝐲) and the vector of observation times `tt`
-
+#' Function needed to compute the Maximum Likelihood Estimation of parameters within the multivariate log-likelihood for the stationary Ornstein-Uhlenbeck State-Space (OUSS) population model, see Dennis & Ponciano (2014).
 #'
 #' @param yt A vector of log-abundance observations in the time-series.
 #' @param tt A vector of observations times.
 #' @param fguess A vector of first guess of the four parameters, from `guess_ouss()`
 #'
-#' @return value of negative log-Likelihood for the OUSS MLE
+#' @return the value of negative log-Likelihood for the OUSS MLE
 #' @export
 #'
 #' @examples

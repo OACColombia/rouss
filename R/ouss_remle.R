@@ -5,7 +5,7 @@
 #'
 #' @param yt A vector of log-abundance observations in the time-series.
 #' @param tt A vector of observations times.
-#' @param fguess A vector of first guess of the four parameters, from `guess_ouss()` (this funcition will use only 2:4 parameters)
+#' @param fguess A vector of first guess of the four parameters, from `guess_ouss()` (this function will use only 2:4 parameters)
 #'
 #' @return A list of MLEs of four parameters, estimated log-likelihood, and Akaike Information Criteria.
 #' @export
