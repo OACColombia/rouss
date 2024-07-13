@@ -1,13 +1,13 @@
 #' Compute the MLE of the OUSS model
 #'
 #'@description
-#' This function comput the Maximum Likelihood Estimates for the stationary Ornstein-Uhlenbeck State-Space (OUSS) population model.
+#' This function computes the Maximum Likelihood Estimates for the stationary Ornstein-Uhlenbeck State-Space (OUSS) population model.
 #'
 #' @param yt A vector of log-abundance observations in the time-series.
 #' @param tt A vector of observations times.
 #' @param fguess A vector of first guess of the four parameters, from `guess_ouss()`
 #'
-#' @return list of MLEs of four parameters, estimated log-likelihood, and Akaike Information Criteria.
+#' @return A list of MLEs of four parameters, estimated log-likelihood, and Akaike Information Criteria.
 #' @export
 #'
 #' @examples
