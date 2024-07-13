@@ -11,6 +11,10 @@
 #' @export
 #'
 #' @examples
+#' yt1 = log(c(18,10,9,14,17,14,5,10,9,5,11,11,4,5,4,8,2,3,9,2,4,7,4,1,2,4,11,11,9,6))
+#' tt1 = c(1966:1995)
+#' negloglike_ouss_remle(yt = yt1, tt = tt1, fguess = guess_ouss(yt = yt1, tt = tt1))
+
 negloglike_ouss_remle=function(yt,tt,fguess){
   # Constrains parameters theta, beta^2, and tau^2 > 0
 
