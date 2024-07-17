@@ -6,7 +6,7 @@ Authors@R:
            comment = c(ORCID = "0000-0001-8457-7840")),
       person("Orlando", "Acevedo-Charry", , "acevedocharry@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4964-8994")))
-Description: This package includes the functions to fit the Ornstein-Uhlenbeck State-Space model to time-series data published by Dennis & Ponciano (2014). It also includes fit of Exponential Growth State-Space model from Humbert et al. 2009. We used these functions with community science data of the eBird platform. Finally, we include the risk-based Viable Population Monitoring (or Population Viability Monitoring) to assess probability of (quasi)extinction of the population across time.
+Description: This package includes the functions to fit the Ornstein-Uhlenbeck State-Space model to time-series data published by Dennis & Ponciano (2014). It also includes fit of Exponential Growth State-Space model from Humbert et al. (2009). We used these functions with community science data of the eBird platform. Finally, we include the risk-based Viable Population Monitoring (or Population Viability Monitoring) to assess probability of (quasi)extinction of the population across time.
 License: MIT + file LICENSE
 Imports:
     tidyverse,
