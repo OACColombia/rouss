@@ -14,6 +14,10 @@
 #' @export
 #'
 #' @examples
+#' yt1 = log(c(18,10,9,14,17,14,5,10,9,5,11,11,4,5,4,8,2,3,9,2,4,7,4,1,2,4,11,11,9,6))
+#' tt1 = c(1966:1995)
+#' ouss_calc(yt = yt1, tt = tt1, pmethod = "REML", nboot = 100, plot.pred = TRUE, plot.bootdists = T)
+#'
 ouss_calc <- function(yt, tt, pmethod="ML", nboot, plot.pred="TRUE", plot.bootdists = "TRUE"){
 
   # Compute a rough guess of the parameter estimates to initialize the search:
