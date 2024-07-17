@@ -8,7 +8,7 @@
 #' @param tt A vector of observations times.
 #' @param parms Parameters estimates (MLEs or REMLEs) from `ouss_remle()` or `ouss_mle()`
 #' @param REMLE Logical argument of use of REMLE
-#' @param plot.it Logical argument of plot observed and predicted abundances in the time series
+#' @param plot.it Logical argument of plot histograms of parametric bootstrapping of the four parameters
 #'
 #' @return list of bootsrtrapped values. If "plot.it = TRUE", it will return histograms of the four parameters
 #' @export
