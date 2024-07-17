@@ -2,17 +2,16 @@ Package: rouss
 Title: Density-dependent state-space models for population-abundance unequal time-series
 Version: 0.0.0.9000
 Authors@R: 
-    c(
-    person("Orlando", "Acevedo-Charry", , "acevedocharry@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-4964-8994")),
-    person("José Miguel", "Ponciano", , "josemi@ufl.edu", role = c("aut"),
-           comment = c(ORCID = "0000-0001-8457-7840")))
-Description: This package fits an Ornstein-Uhlenbeck State-Space model to time-series data from the community science data eBird. 
-    Then, it conducts a Viable Population Monitoring to assess probability of extinction of the population across time.
+    c(person("José Miguel", "Ponciano", , "josemi@ufl.edu", role = c("aut"),
+           comment = c(ORCID = "0000-0001-8457-7840")),
+      person("Orlando", "Acevedo-Charry", , "acevedocharry@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-4964-8994")))
+Description: This package includes the functions to fit the Ornstein-Uhlenbeck State-Space model to time-series data published by Dennis & Ponciano (2014). It also includes fit of Exponential Growth State-Space model from Humbert et al. 2009. We used these functions with community science data of the eBird platform. Finally, we include the risk-based Viable Population Monitoring (or Population Viability Monitoring) to assess probability of (quasi)extinction of the population across time.
 License: MIT + file LICENSE
 Imports:
     tidyverse,
     MASS,
+    kde1d
 Suggests:
     lubridate,
     auk,
