@@ -6,7 +6,7 @@
 #' @param yt A vector of log-abundance observations in the time-series.
 #' @param tt A vector of observations times.
 #' @param parms Parameters estimates (MLEs or REMLEs) from `ouss_remle()` or `ouss_mle()`
-#' @param plot.it Logical indicator of plot observed and predicted abundances in the time series
+#' @param plot.it Logical argument of plot observed and predicted abundances in the time series
 #'
 #' @return
 #' If "plot.it = TRUE", it will return a simple figure of the population trend.
@@ -21,7 +21,7 @@
 #' tt1 = c(1966:1995)
 #' parms1 = ouss_remle(yt = yt1, tt = tt1, fguess = guess_ouss(yt = yt1, tt = tt1))
 #'
-#' ouss_predict(yt = yt1, tt = tt1, parms = parms1$remle, plot.it = T)
+#' ouss_predict(yt = yt1, tt = tt1, parms = parms1$remle, plot.it = TRUE)
 #'
 ouss_predict <- function(yt,tt,parms, plot.it="TRUE"){
 
