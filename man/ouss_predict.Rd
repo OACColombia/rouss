@@ -13,7 +13,7 @@ ouss_predict(yt, tt, parms, plot.it = "TRUE")
 
 \item{parms}{Parameters estimates (MLEs or REMLEs) from \code{ouss_remle()} or \code{ouss_mle()}}
 
-\item{plot.it}{Logical indicator of plot observed and predicted abundances in the time series}
+\item{plot.it}{Logical argument of plot observed and predicted abundances in the time series}
 }
 \value{
 If "plot.it = TRUE", it will return a simple figure of the population trend.
@@ -32,6 +32,6 @@ yt1 = log(c(18,10,9,14,17,14,5,10,9,5,11,11,4,5,4,8,2,3,9,2,4,7,4,1,2,4,11,11,9,
 tt1 = c(1966:1995)
 parms1 = ouss_remle(yt = yt1, tt = tt1, fguess = guess_ouss(yt = yt1, tt = tt1))
 
-ouss_predict(yt = yt1, tt = tt1, parms = parms1$remle, plot.it = T)
+ouss_predict(yt = yt1, tt = tt1, parms = parms1$remles, plot.it = TRUE)
 
 }
