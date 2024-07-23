@@ -15,9 +15,9 @@
 #' tt1 = c(1966:1995)
 #' B = 10 #it was recommended 2000 for estimate CI
 #'
-#' EGSS.MLE.model = egss_mle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
+#' EGSS.REMLE.model = egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
 #'
-#' egss_sim(nsims = B, tt = tt1, parms = EGSS.MLE.model$mles)
+#' egss_sim(nsims = B, tt = tt1, parms = EGSS.MLE.model$remles)
 
 egss_sim <- function(nsims,tt,parms){
 
@@ -29,10 +29,8 @@ egss_sim <- function(nsims,tt,parms){
   qp1           <- q+1;
 
   # parameters
-  theta         <- parms[1];
-  sigmasq       <- parms[2];
-  tausq         <- parms[3];
-  x0            <- parms[4];
+  sigmasq       <- parms[1];
+  tausq         <- parms[2];
 
   vx      <- matrix(0,qp1,qp1);
   for(i in 1:q){
