@@ -4,17 +4,17 @@
 \alias{negloglike_egss_mle}
 \title{Numerical optimization for MLE of the EGSS}
 \usage{
-negloglike_egss_mle(yt, tt, fguess_egss)
+negloglike_egss_mle(fguess_egss, yt, tt)
 }
 \arguments{
+\item{fguess_egss}{A vector of first guess of the four parameters, from \code{guess_egss()}}
+
 \item{yt}{A vector of log-abundance observations in the time-series.}
 
 \item{tt}{A vector of observations times.}
-
-\item{fguess_egss}{A vector of first guess of the four parameters, from \code{guess_egss()}}
 }
 \value{
-the value of negative log-Likelihood for the OUSS MLE
+the value of negative log-Likelihood for the EGSS MLE
 }
 \description{
 Function needed to compute the Maximum Likelihood Estimation of parameters within the multivariate log-likelihood for the Exponential Growth State-Space (EGSS) population model, see Humbert \emph{et al.} (2009).

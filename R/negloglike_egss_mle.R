@@ -7,7 +7,7 @@
 #' @param tt A vector of observations times.
 #' @param fguess_egss A vector of first guess of the four parameters, from `guess_egss()`
 #'
-#' @return the value of negative log-Likelihood for the OUSS MLE
+#' @return the value of negative log-Likelihood for the EGSS MLE
 #' @export
 #'
 #' @examples
@@ -15,7 +15,7 @@
 #' tt1 = c(1966:1995)
 #' negloglike_egss_mle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
 
-negloglike_egss_mle <- function(yt,tt,fguess_egss){
+negloglike_egss_mle <- function(fguess_egss, yt,tt){
 
   theta         <- fguess_egss[1];
   sigmasq       <- exp(fguess_egss[2]);

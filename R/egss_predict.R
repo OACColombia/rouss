@@ -5,7 +5,7 @@
 #'
 #' @param yt A vector of log-abundance observations in the time-series.
 #' @param tt A vector of observations times.
-#' @param parms Parameters estimates (MLEs or REMLEs) from `egss_remle()`(some problems!) or `egss_mle()`
+#' @param parms Parameters estimates of REMLEs from `egss_remle()
 #'
 #' @return A dataframe of the original tt vector, Prediction (REMLE), and observed vector (real)
 #' @export
@@ -17,21 +17,17 @@
 #'
 #' egss_predict(yt = yt1, tt = tt1, parms = parms1$mles)
 #'
-egss_predict <- function(yt,tt,parms){
+egss_predict <- function(yt,tt,parms, plot.it="TRUE"){
 
   # Time-vector starting in 0.
   t.i     <- tt-tt[1];
-  # Number of time-series transitions
   q       <- length(t.i)-1;
-  # length of time-series
   qp1     <- q+1;
   t.s     <- t.i[2:qp1] - t.i[1:q];
 
-  # parameters
-  theta   <- parms[1];
-  sigmasq <- parms[2];
-  tausq   <- parms[3];
-  x0      <- parms[4];
+  # parameters (only sigmasqr and tausqr - REMLE)
+  sigmasq <- parms[1];
+  tausq   <- parms[2];
 
   # Missing t.s
   nmiss   <- t.s-1;
@@ -72,7 +68,7 @@ egss_predict <- function(yt,tt,parms){
   m=rep(1,qp1); # Will contain Kalman means for Kalman calculations.
   v=rep(1,qp1); # Will contain variances for Kalman calculations.
 
-  m[1]=x0; # Initial mean of Y(t).
+  m[1]=x0.remle; # Initial mean of Y(t).
   v[1]=tausq; # Initial variance of Y(t).
 
   for (ti in 1:q) # Loop to generate estimated population abundances
@@ -85,6 +81,15 @@ egss_predict <- function(yt,tt,parms){
   # see equation 54 in Dennis et al. (2006).
 
   Predict.t=exp(m+((v-tausq)/v)*(yt-m));
+
+  if(plot.it=="TRUE"){
+    #  Plot the data & model-fitted values
+    #X11()
+    plot(tt,exp(yt),xlab="Time",ylab="Population abundance",type="b",cex=1.5,
+         main="Predicted (--) and observed (-o-) abundances");#  Population data are circles.
+    par(lty="dashed"); #  Predicted abundances are dashed line.
+    points(tt,Predict.t, type="l", lwd=1);
+  }
 
   return(data.frame(Time.t = tt, REMLE = Predict.t, Observed.y = exp(yt)))
 }

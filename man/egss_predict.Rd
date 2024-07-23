@@ -4,14 +4,14 @@
 \alias{egss_predict}
 \title{Predict trajectory for EGSS}
 \usage{
-egss_predict(yt, tt, parms)
+egss_predict(yt, tt, parms, plot.it = "TRUE")
 }
 \arguments{
 \item{yt}{A vector of log-abundance observations in the time-series.}
 
 \item{tt}{A vector of observations times.}
 
-\item{parms}{Parameters estimates (MLEs or REMLEs) from \code{egss_remle()}(some problems!) or \code{egss_mle()}}
+\item{parms}{Parameters estimates of REMLEs from `egss_remle()}
 }
 \value{
 A dataframe of the original tt vector, Prediction (REMLE), and observed vector (real)

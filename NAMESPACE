@@ -2,10 +2,12 @@
 
 export(egss_mle)
 export(egss_predict)
+export(egss_remle)
 export(egss_sim)
 export(guess_egss)
 export(guess_ouss)
 export(negloglike_egss_mle)
+export(negloglike_egss_remle)
 export(negloglike_ouss_mle)
 export(negloglike_ouss_remle)
 export(ouss_calc)
