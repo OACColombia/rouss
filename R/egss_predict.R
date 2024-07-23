@@ -73,7 +73,7 @@ egss_predict <- function(yt,tt,parms, plot.it="TRUE"){
 
   for (ti in 1:q) # Loop to generate estimated population abundances
   { # using Kalman filter (see equations 6 & 7, # Dennis et al. (2006)).
-    m[ti+1]=theta+(m[ti]+((v[ti]-tausq)/v[ti])*(yt[ti]-m[ti]));
+    m[ti+1]=theta.remle+(m[ti]+((v[ti]-tausq)/v[ti])*(yt[ti]-m[ti]));
     v[ti+1]=tausq*((v[ti]-tausq)/v[ti])+sigmasq+tausq;
   }
 
