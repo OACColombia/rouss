@@ -21,12 +21,10 @@
 
 egss_sim <- function(nsims,tt,parms){
 
-  # Time-vector starting in 0.
   t.i           <- tt-tt[1];
-  # Number of time-series transitions
   q             <- length(t.i)-1;
-  # length of time-series
   qp1           <- q+1;
+  t.s     <- t.i[2:qp1] - t.i[1:q];
 
   # parameters
   sigmasq       <- parms[1];
@@ -43,7 +41,23 @@ egss_sim <- function(nsims,tt,parms){
                           ncol=qp1);
   diag(Itausq)  <- rep(tausq,qp1);
   V             <- Sigma.mat + Itausq;
-  theta.vec     <- matrix((x0+theta*t.i),
+
+  D1mat=cbind(-diag(1/t.s),
+              matrix(0,q,1))+cbind(matrix(0,q,1),
+                                   diag(1/t.s));
+
+  V1mat=D1mat%*%V%*%t(D1mat);
+
+  W.t=(yt[2:qp1]-yt[1:q])/t.s;
+  j1=matrix(1,q,1);
+  V1inv=ginv(V1mat);
+
+  theta.remle=(t(j1)%*%V1inv%*%W.t)/(t(j1)%*%V1inv%*%j1);
+  j=matrix(1,qp1,1);
+  Vinv=ginv(V);
+  x0.remle=(t(j)%*%Vinv%*%(yt-c(theta.remle)*t.i))/(t(j)%*%Vinv%*%j);
+
+  theta.vec     <- matrix((x0.remle+theta.remle*t.i),
                           nrow=qp1,
                           ncol=1);
   out           <- randmvn(n=nsims,
