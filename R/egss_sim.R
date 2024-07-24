@@ -55,9 +55,9 @@ egss_sim <- function(nsims,tt,parms){
   theta.remle=(t(j1)%*%V1inv%*%W.t)/(t(j1)%*%V1inv%*%j1);
   j=matrix(1,qp1,1);
   Vinv=ginv(V);
-  x0.remle=(t(j)%*%Vinv%*%(yt-theta.remle*t.i))/(t(j)%*%Vinv%*%j);
+  x0.remle=(t(j)%*%Vinv%*%(yt-as.numeric(theta.remle)*t.i))/(t(j)%*%Vinv%*%j);
 
-  theta.vec     <- matrix((c(x0.remle)+c(theta.remle)*t.i),
+  theta.vec     <- matrix((as.numeric(x0.remle)+as.numeric(theta.remle)*t.i),
                           nrow=qp1,
                           ncol=1);
   out           <- randmvn(n=nsims,
