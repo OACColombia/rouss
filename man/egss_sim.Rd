@@ -11,7 +11,7 @@ egss_sim(nsims, tt, parms)
 
 \item{tt}{The ORIGINAL vector of observation times (𝑡_0, 𝑡_1, 𝑡_2, …, 𝑡_𝑞)}
 
-\item{parms}{A vector of parameters values estimated from \code{egss_mle()}}
+\item{parms}{A vector of parameters values estimated from \code{egss_remle()}}
 }
 \value{
 A matrix of size \code{nsims} with simulations of log abundance in each time step of the timeseries (using \code{randmvn()})
@@ -24,7 +24,7 @@ yt1 = log(c(18,10,9,14,17,14,5,10,9,5,11,11,4,5,4,8,2,3,9,2,4,7,4,1,2,4,11,11,9,
 tt1 = c(1966:1995)
 B = 10 #it was recommended 2000 for estimate CI
 
-EGSS.MLE.model = egss_mle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
+EGSS.REMLE.model = egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
 
-egss_sim(nsims = B, tt = tt1, parms = EGSS.MLE.model$mles)
+egss_sim(nsims = B, tt = tt1, parms = EGSS.REMLE.model$remles)
 }
