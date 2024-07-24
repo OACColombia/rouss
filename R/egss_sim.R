@@ -4,11 +4,10 @@
 #' Function to simulate exponential stochastic population dynamics from parameters fitted under the Exponential Growth State-Space models.
 #'
 #' @param nsims The number of bootstrap replicates to simulate (≥2000)
-#' @param yt A vector of log-abundance observations in the time-series.
 #' @param tt The ORIGINAL vector of observation times (𝑡_0, 𝑡_1, 𝑡_2, …, 𝑡_𝑞)
-#' @param parms A vector of parameters values estimated from `egss_remle()`
+#' @param parms A vector of parameters values estimated from `egss_remle()` (recommended, althoug also works with `egss_mle()`)
 #'
-#' @return A matrix of size `nsims` with simulations of log abundance in each time step of the timeseries (using `randmvn()`)
+#' @return A matrix of size `nsims` with simulations of log abundance in each time step of the time-series (using `randmvn()`)
 #' @export
 #'
 #' @examples
@@ -18,18 +17,20 @@
 #'
 #' EGSS.REMLE.model = egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
 #'
-#' egss_sim(nsims = B, yt = yt1, tt = tt1, parms = EGSS.REMLE.model$remles)
+#' egss_sim(nsims = B, tt = tt1, parms = EGSS.REMLE.model$remles)
 
-egss_sim <- function(nsims,yt,tt,parms){
+egss_sim <- function(nsims,tt,parms){
 
+  # time and temporal scale
   t.i           <- tt-tt[1];
   q             <- length(t.i)-1;
   qp1           <- q+1;
-  t.s     <- t.i[2:qp1] - t.i[1:q];
 
   # parameters
-  sigmasq       <- parms[1];
-  tausq         <- parms[2];
+  theta         <- parms[1];
+  sigmasq       <- parms[2];
+  tausq         <- parms[3];
+  x0            <- parms[4];
 
   vx      <- matrix(0,qp1,qp1);
   for(i in 1:q){
@@ -42,23 +43,7 @@ egss_sim <- function(nsims,yt,tt,parms){
                           ncol=qp1);
   diag(Itausq)  <- rep(tausq,qp1);
   V             <- Sigma.mat + Itausq;
-
-  D1mat=cbind(-diag(1/t.s),
-              matrix(0,q,1))+cbind(matrix(0,q,1),
-                                   diag(1/t.s));
-
-  V1mat=D1mat%*%V%*%t(D1mat);
-
-  W.t=(yt[2:qp1]-yt[1:q])/t.s;
-  j1=matrix(1,q,1);
-  V1inv=ginv(V1mat);
-
-  theta.remle=(t(j1)%*%V1inv%*%W.t)/(t(j1)%*%V1inv%*%j1);
-  j=matrix(1,qp1,1);
-  Vinv=ginv(V);
-  x0.remle=(t(j)%*%Vinv%*%(yt-as.numeric(theta.remle)*t.i))/(t(j)%*%Vinv%*%j);
-
-  theta.vec     <- matrix((as.numeric(x0.remle)+as.numeric(theta.remle)*t.i),
+  theta.vec     <- matrix((x0+theta*t.i),
                           nrow=qp1,
                           ncol=1);
   out           <- randmvn(n=nsims,
