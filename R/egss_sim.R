@@ -5,7 +5,7 @@
 #'
 #' @param nsims The number of bootstrap replicates to simulate (≥2000)
 #' @param tt The ORIGINAL vector of observation times (𝑡_0, 𝑡_1, 𝑡_2, …, 𝑡_𝑞)
-#' @param parms A vector of parameters values estimated from `egss_mle()`
+#' @param parms A vector of parameters values estimated from `egss_remle()`
 #'
 #' @return A matrix of size `nsims` with simulations of log abundance in each time step of the timeseries (using `randmvn()`)
 #' @export
@@ -17,7 +17,7 @@
 #'
 #' EGSS.REMLE.model = egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
 #'
-#' egss_sim(nsims = B, tt = tt1, parms = EGSS.MLE.model$remles)
+#' egss_sim(nsims = B, tt = tt1, parms = EGSS.REMLE.model$remles)
 
 egss_sim <- function(nsims,tt,parms){
 
@@ -55,7 +55,7 @@ egss_sim <- function(nsims,tt,parms){
   theta.remle=(t(j1)%*%V1inv%*%W.t)/(t(j1)%*%V1inv%*%j1);
   j=matrix(1,qp1,1);
   Vinv=ginv(V);
-  x0.remle=(t(j)%*%Vinv%*%(yt-c(theta.remle)*t.i))/(t(j)%*%Vinv%*%j);
+  x0.remle=(t(j)%*%Vinv%*%(yt-theta.remle*t.i))/(t(j)%*%Vinv%*%j);
 
   theta.vec     <- matrix((c(x0.remle)+c(theta.remle)*t.i),
                           nrow=qp1,
