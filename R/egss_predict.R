@@ -13,9 +13,9 @@
 #' @examples
 #' yt1 = log(c(18,10,9,14,17,14,5,10,9,5,11,11,4,5,4,8,2,3,9,2,4,7,4,1,2,4,11,11,9,6))
 #' tt1 = c(1966:1995)
-#' parms1 = egss_mle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
+#' parms1 = egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
 #'
-#' egss_predict(yt = yt1, tt = tt1, parms = parms1$mles)
+#' egss_predict(yt = yt1, tt = tt1, parms = parms1$remles)
 #'
 egss_predict <- function(yt,tt,parms, plot.it="TRUE"){
 
@@ -25,43 +25,11 @@ egss_predict <- function(yt,tt,parms, plot.it="TRUE"){
   qp1     <- q+1;
   t.s     <- t.i[2:qp1] - t.i[1:q];
 
-  # parameters (only sigmasqr and tausqr - REMLE)
-  sigmasq <- parms[1];
-  tausq   <- parms[2];
-
-  # Missing t.s
-  nmiss   <- t.s-1;
-  long.nmiss <- c(0,nmiss);
-  Nmiss   <- sum(nmiss)
-
-  vx      <- matrix(0,qp1,qp1);
-  for(i in 1:q){
-    vx[((i+1):qp1),((i+1):qp1)] <- matrix(1,(qp1-i),(qp1-i))*t.i[(i+1)];
-  }
-  Sigma.mat    <- sigmasq*vx;
-  Itausq       <- matrix(rep(0,(qp1*qp1)),
-                         nrow=qp1,
-                         ncol=qp1);
-  diag(Itausq) <- rep(tausq,qp1);
-  V            <- Sigma.mat + Itausq;
-
-  D1mat=cbind(-diag(1/t.s),
-              matrix(0,q,1))+cbind(matrix(0,q,1),
-                                   diag(1/t.s));
-
-  V1mat=D1mat%*%V%*%t(D1mat);
-
-  W.t=(yt[2:qp1]-yt[1:q])/t.s;
-  j1=matrix(1,q,1);
-  V1inv=ginv(V1mat);
-
-  theta.remle=(t(j1)%*%V1inv%*%W.t)/(t(j1)%*%V1inv%*%j1);
-  j=matrix(1,qp1,1);
-  Vinv=ginv(V);
-  x0.remle=(t(j)%*%Vinv%*%(yt-c(theta.remle)*t.i))/(t(j)%*%Vinv%*%j);
-  Var_theta.remle=1/(t(j1)%*%V1inv%*%j1); # Variance of theta
-  theta_hi.remle=theta.remle+1.96*sqrt(Var_theta.remle); # 95% CI for theta
-  theta_lo.remle=theta.remle-1.96*sqrt(Var_theta.remle)
+  # parameters ()
+  theta.remle <- parms[1];
+  sigmasq     <- parms[2];
+  tausq       <- parms[3];
+  x0.remle    <- parms[4];
 
   #Calculate estimated population size for EGSS model
 
