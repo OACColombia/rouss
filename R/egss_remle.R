@@ -7,7 +7,7 @@
 #' @param tt A vector of observations times.
 #' @param fguess_egss A vector of first guess of the four parameters, from `guess_egss()`
 #'
-#' @return A list of REMLEs of two parameters (sigmasqr and tausqr), estimated log-likelihood, and Akaike Information Criteria.
+#' @return A list of REMLEs of two maximized parameters (sigmasqr and tausqr) and two estimated parameters (theta and x0), estimated log-likelihood, and Akaike Information Criteria.
 #' @export
 #'
 #' @examples
