@@ -4,6 +4,7 @@
 #' Function to simulate exponential stochastic population dynamics from parameters fitted under the Exponential Growth State-Space models.
 #'
 #' @param nsims The number of bootstrap replicates to simulate (≥2000)
+#' @param yt A vector of log-abundance observations in the time-series.
 #' @param tt The ORIGINAL vector of observation times (𝑡_0, 𝑡_1, 𝑡_2, …, 𝑡_𝑞)
 #' @param parms A vector of parameters values estimated from `egss_remle()`
 #'
@@ -17,9 +18,9 @@
 #'
 #' EGSS.REMLE.model = egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
 #'
-#' egss_sim(nsims = B, tt = tt1, parms = EGSS.REMLE.model$remles)
+#' egss_sim(nsims = B, yt = yt1, tt = tt1, parms = EGSS.REMLE.model$remles)
 
-egss_sim <- function(nsims,tt,parms){
+egss_sim <- function(nsims,yt,tt,parms){
 
   t.i           <- tt-tt[1];
   q             <- length(t.i)-1;
