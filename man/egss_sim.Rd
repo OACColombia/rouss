@@ -4,19 +4,17 @@
 \alias{egss_sim}
 \title{Simulation of EGSS model}
 \usage{
-egss_sim(nsims, yt, tt, parms)
+egss_sim(nsims, tt, parms)
 }
 \arguments{
 \item{nsims}{The number of bootstrap replicates to simulate (≥2000)}
 
-\item{yt}{A vector of log-abundance observations in the time-series.}
-
 \item{tt}{The ORIGINAL vector of observation times (𝑡_0, 𝑡_1, 𝑡_2, …, 𝑡_𝑞)}
 
-\item{parms}{A vector of parameters values estimated from \code{egss_remle()}}
+\item{parms}{A vector of parameters values estimated from \code{egss_remle()} (recommended, althoug also works with \code{egss_mle()})}
 }
 \value{
-A matrix of size \code{nsims} with simulations of log abundance in each time step of the timeseries (using \code{randmvn()})
+A matrix of size \code{nsims} with simulations of log abundance in each time step of the time-series (using \code{randmvn()})
 }
 \description{
 Function to simulate exponential stochastic population dynamics from parameters fitted under the Exponential Growth State-Space models.
@@ -28,5 +26,5 @@ B = 10 #it was recommended 2000 for estimate CI
 
 EGSS.REMLE.model = egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
 
-egss_sim(nsims = B, yt = yt1, tt = tt1, parms = EGSS.REMLE.model$remles)
+egss_sim(nsims = B, tt = tt1, parms = EGSS.REMLE.model$remles)
 }

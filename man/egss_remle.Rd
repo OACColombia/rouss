@@ -14,7 +14,7 @@ egss_remle(yt, tt, fguess_egss)
 \item{fguess_egss}{A vector of first guess of the four parameters, from \code{guess_egss()}}
 }
 \value{
-A list of REMLEs of two parameters (sigmasqr and tausqr), estimated log-likelihood, and Akaike Information Criteria.
+A list of REMLEs of two maximized parameters (sigmasqr and tausqr) and two estimated parameters (theta and x0), estimated log-likelihood, and Akaike Information Criteria.
 }
 \description{
 This function computes the Restricted Maximum Likelihood Estimates for the Exponential Growth State-Space (EGSS) population model.
