@@ -48,7 +48,7 @@ egss_predict <- function(yt,tt,parms,plot.it="TRUE"){
   # The following statement calculates exp{E[X(t) | Y(t), Y(t-1),...,Y(0)]};
   # see equation 54 in Dennis et al. (2006).
 
-  Predict.REML = exp(m+((v-tausq)/v)*(yt-m));
+  Predict.EGSS.REML = exp(m+((v-tausq)/v)*(yt-m));
 
   if(plot.it=="TRUE"){
     #  Plot the data & model-fitted values
@@ -56,7 +56,7 @@ egss_predict <- function(yt,tt,parms,plot.it="TRUE"){
     plot(tt,exp(yt),xlab="Time",ylab="Population abundance",
          type="b",cex=1.5, lwd = 1.5, lty = 1,
          main="Predicted (--) and observed (-o-) abundances");#  Population data are circles.
-    points(tt,Predict.REML, type="l", lwd=1, lty = 2);
+    points(tt,Predict.EGSS.REML, type="l", lwd=1, lty = 2);
   }
 
   return(list(cbind(Time = tt, Predict.EGSS.REML, Observed.y = exp(yt))))
