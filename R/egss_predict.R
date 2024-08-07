@@ -15,9 +15,9 @@
 #' tt1 = c(1966:1995)
 #' parms1 = egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
 #'
-#' egss_predict(yt = yt1, tt = tt1, parms = parms1$remles)
+#' egss_predict(yt = yt1, tt = tt1, parms = parms1$remles, plot.it = T)
 #'
-egss_predict <- function(yt,tt,parms, plot.it="TRUE"){
+egss_predict <- function(yt,tt,parms,plot.it="TRUE"){
 
   # Time-vector starting in 0.
   t.i     <- tt-tt[1];
@@ -48,16 +48,16 @@ egss_predict <- function(yt,tt,parms, plot.it="TRUE"){
   # The following statement calculates exp{E[X(t) | Y(t), Y(t-1),...,Y(0)]};
   # see equation 54 in Dennis et al. (2006).
 
-  Predict.t=exp(m+((v-tausq)/v)*(yt-m));
+  Predict.REML = exp(m+((v-tausq)/v)*(yt-m));
 
   if(plot.it=="TRUE"){
     #  Plot the data & model-fitted values
     #X11()
-    plot(tt,exp(yt),xlab="Time",ylab="Population abundance",type="b",cex=1.5,
+    plot(tt,exp(yt),xlab="Time",ylab="Population abundance",
+         type="b",cex=1.5, lwd = 1.5, lty = 1,
          main="Predicted (--) and observed (-o-) abundances");#  Population data are circles.
-    par(lty="dashed"); #  Predicted abundances are dashed line.
-    points(tt,Predict.t, type="l", lwd=1);
+    points(tt,Predict.REML, type="l", lwd=1, lty = 2);
   }
 
-  return(data.frame(Time.t = tt, REMLE = Predict.t, Observed.y = exp(yt)))
+  return(list(cbind(Time = tt, Predict.EGSS.REML, Observed.y = exp(yt))))
 }

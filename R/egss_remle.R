@@ -64,20 +64,13 @@ egss_remle <- function(yt,tt,fguess_egss){
   #initial population
   x0.remle=(t(j)%*%Vinv%*%(yt-as.numeric(theta.remle)*t.i))/(t(j)%*%Vinv%*%j);
 
-  #Variance and 95%CI for theta
-  Var_theta.reml=1/(t(j1)%*%V1inv%*%j1);
-  theta_hi.reml=theta.reml+1.96*sqrt(Var_theta.reml);
-  theta_lo.reml=theta.reml+1.96*sqrt(Var_theta.reml);
-
   #Extract REMLEs and AIC
   remles      <- c(theta.remle,exp(optim.out$par[1:2]),x0.remle)
   lnL.hat     <- - optim.out$value[1]
   AIC         <- -2*lnL.hat + 2*2 #where 2 = length(REMLEs)...
-  CIs.theta   <- c(theta_lo.reml, theta_hi.reml)
 
   out         <- list(remles=remles,
                       lnL.hat = lnL.hat,
-                      AIC=AIC,
-                      CIs.theta = CIs.theta)
+                      AIC=AIC)
   return(out)
 }
