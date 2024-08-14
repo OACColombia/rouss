@@ -4,10 +4,10 @@
 \alias{negloglike_egss_remle}
 \title{Numerical optimization for REMLE of the EGSS}
 \usage{
-negloglike_egss_remle(fguess_egss, yt, tt)
+negloglike_egss_remle(fguess, yt, tt)
 }
 \arguments{
-\item{fguess_egss}{A vector of first guess of the four parameters, from \code{guess_egss()}}
+\item{fguess}{A vector of first guess of the four parameters, from \code{guess_egss()}}
 
 \item{yt}{A vector of log-abundance observations in the time-series.}
 
@@ -22,5 +22,5 @@ Function needed to compute the Restricted Maximum Likelihood Estimation of param
 \examples{
 yt1 = log(c(18,10,9,14,17,14,5,10,9,5,11,11,4,5,4,8,2,3,9,2,4,7,4,1,2,4,11,11,9,6))
 tt1 = c(1966:1995)
-negloglike_egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
+negloglike_egss_remle(yt = yt1, tt = tt1, fguess = guess_egss(yt = yt1, tt = tt1))
 }

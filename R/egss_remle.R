@@ -5,7 +5,7 @@
 #'
 #' @param yt A vector of log-abundance observations in the time-series.
 #' @param tt A vector of observations times.
-#' @param fguess_egss A vector of first guess of the four parameters, from `guess_egss()`
+#' @param fguess A vector of first guess of the four parameters, from `guess_egss()`
 #'
 #' @return A list of REMLEs of two maximized parameters (sigmasqr and tausqr) and two estimated parameters (theta and x0), estimated log-likelihood, and Akaike Information Criteria.
 #' @export
@@ -13,9 +13,9 @@
 #' @examples
 #' yt1 = log(c(18,10,9,14,17,14,5,10,9,5,11,11,4,5,4,8,2,3,9,2,4,7,4,1,2,4,11,11,9,6))
 #' tt1 = c(1966:1995)
-#' egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
+#' egss_remle(yt = yt1, tt = tt1, fguess = guess_egss(yt = yt1, tt = tt1))
 
-egss_remle <- function(yt,tt,fguess_egss){
+egss_remle <- function(yt,tt,fguess){
 
   #Temporal vectors
   t.i         <- tt-tt[1];
@@ -24,7 +24,7 @@ egss_remle <- function(yt,tt,fguess_egss){
   t.s     <- t.i[2:qp1] - t.i[1:q];
 
   # initial guesses (sigmasq and tausq at log scale)
-  guess.optim <- c(log(fguess_egss[2:3]))
+  guess.optim <- c(log(fguess[2:3]))
   # numerical optimization
   optim.out   <- optim(par=guess.optim,
                        fn=negloglike_egss_remle,

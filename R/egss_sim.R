@@ -15,7 +15,7 @@
 #' tt1 = c(1966:1995)
 #' B = 10 #it was recommended 2000 for estimate CI
 #'
-#' EGSS.REMLE.model = egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
+#' EGSS.REMLE.model = egss_remle(yt = yt1, tt = tt1, fguess = guess_egss(yt = yt1, tt = tt1))
 #'
 #' egss_sim(nsims = B, tt = tt1, parms = EGSS.REMLE.model$remles)
 

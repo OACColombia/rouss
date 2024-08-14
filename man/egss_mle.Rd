@@ -4,7 +4,7 @@
 \alias{egss_mle}
 \title{Compute the MLE of the EGSS model}
 \usage{
-egss_mle(yt, tt, fguess_egss)
+egss_mle(yt, tt, fguess)
 }
 \arguments{
 \item{yt}{A vector of log-abundance observations in the time-series.}

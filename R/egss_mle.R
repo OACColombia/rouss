@@ -15,7 +15,7 @@
 #' tt1 = c(1966:1995)
 #' egss_mle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
 
-egss_mle <- function(yt,tt,fguess_egss){
+egss_mle <- function(yt,tt,fguess){
 
   # Time-vector starting in 0.
   t.i         <- tt-tt[1];
@@ -24,9 +24,9 @@ egss_mle <- function(yt,tt,fguess_egss){
   # length of time-series
   qp1         <- q+1;
   # initial guesses (r as estimated, sigmasq and tausq at log scale (?), x0 as estimated)
-  guess.optim <- c(fguess_egss[1],
-                   log(fguess_egss[2:3]),
-                   fguess_egss[4])
+  guess.optim <- c(fguess[1],
+                   log(fguess[2:3]),
+                   fguess[4])
   # numerical optimization
   optim.out   <- optim(par=guess.optim,
                        fn=negloglike_egss_mle,

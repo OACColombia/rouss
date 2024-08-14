@@ -3,7 +3,7 @@
 #'@description
 #' Function needed to compute the Restricted Maximum Likelihood Estimation of parameters within the multivariate log-likelihood for the Exponential Growth State-Space (EGSS) population model, see Humbert _et al._ (2009).
 #'
-#' @param fguess_egss A vector of first guess of the four parameters, from `guess_egss()`
+#' @param fguess A vector of first guess of the four parameters, from `guess_egss()`
 #' @param yt A vector of log-abundance observations in the time-series.
 #' @param tt A vector of observations times.
 #'
@@ -13,12 +13,12 @@
 #' @examples
 #' yt1 = log(c(18,10,9,14,17,14,5,10,9,5,11,11,4,5,4,8,2,3,9,2,4,7,4,1,2,4,11,11,9,6))
 #' tt1 = c(1966:1995)
-#' negloglike_egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
+#' negloglike_egss_remle(yt = yt1, tt = tt1, fguess = guess_egss(yt = yt1, tt = tt1))
 
-negloglike_egss_remle <- function(fguess_egss,yt,tt){
+negloglike_egss_remle <- function(fguess,yt,tt){
 
-  sigmasq     <- exp(fguess_egss[1]); #in egss_remle, this have only the two parameters
-  tausq       <- exp(fguess_egss[2]);
+  sigmasq     <- exp(fguess[1]); #in egss_remle, this have only the two parameters
+  tausq       <- exp(fguess[2]);
   q           <- length(yt) - 1;
   qp1         <- q+1;
 

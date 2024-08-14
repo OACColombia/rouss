@@ -22,7 +22,7 @@ UNFINISHED function that provides prediction trajectory of a population under EG
 \examples{
 yt1 = log(c(18,10,9,14,17,14,5,10,9,5,11,11,4,5,4,8,2,3,9,2,4,7,4,1,2,4,11,11,9,6))
 tt1 = c(1966:1995)
-parms1 = egss_remle(yt = yt1, tt = tt1, fguess_egss = guess_egss(yt = yt1, tt = tt1))
+parms1 = egss_remle(yt = yt1, tt = tt1, fguess = guess_egss(yt = yt1, tt = tt1))
 
 egss_predict(yt = yt1, tt = tt1, parms = parms1$remles, plot.it = T)
 
